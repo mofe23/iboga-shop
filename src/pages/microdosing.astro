@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Iboga Microdosing – Sanft und wirkungsvoll"
+  description="Microdosing mit Iboga Wurzelrinde: die richtige Dosierung finden, sanft starten, tiefgreifende Veränderungen erleben."
+  image="/images/microdosing.jpg"
+  locale="de"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <header class="mb-10">
+      <h1 class="font-serif text-4xl font-semibold text-earth-900 leading-tight">Microdosing</h1>
+      <p class="mt-4 text-xl text-earth-600">
+        Die richtige Dosierung finden! Hab keine Angst, probier dich aus!
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 space-y-6 text-earth-700 leading-relaxed">
+        <h2 class="font-serif text-2xl font-semibold text-earth-900">Was heißt Microdosing eigentlich?</h2>
+        <p>
+          Microdosing heißt: unter dem wahrnehmbaren Bereich dosieren. Iboga und andere Psychedelika
+          wie Psilocybin, Ibogain, Mescalin oder Ayahuasca werden zunehmend in geringen,
+          nicht-high-machenden Dosen eingenommen, um leistungsfähiger zu sein oder Depressionen
+          und Ängste zu bekämpfen. Erste Studien zeigen Verbesserungen bei Denk- und Kreativitätstests.
+        </p>
+
+        <h2 class="font-serif text-2xl font-semibold text-earth-900 pt-4">Wie fühlt sich Microdosing an?</h2>
+        <p>
+          Es fühlt sich an, als seist du nach Hause gekommen. Du bist auf eine Weise zentriert,
+          die deinem gewohnten Seinszustand fremd ist – und gleichzeitig so natürlich, dass es
+          schwer zu glauben ist. Du bist vollkommen <em>compos mentis</em>, handlungsfähig,
+          klar, mit einem Gefühl des Friedens und Nicht-Urteils.
+        </p>
+
+        <div class="bg-forest-50 border border-forest-200 rounded-xl p-6">
+          <h3 class="font-semibold text-forest-800 mb-3">Dosierungsbeispiel</h3>
+          <p class="text-sm text-forest-700 mb-4">Produkt: Wurzelrinde Kapseln 450mg / 4–5% Ibogain</p>
+          <div class="space-y-2 text-sm text-earth-800">
+            <div class="flex justify-between py-2 border-b border-forest-100">
+              <span>Bis 60 kg</span><span class="font-medium">1. Woche: 2 Kapseln → danach 1</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-forest-100">
+              <span>Bis 80 kg</span><span class="font-medium">1. Woche: 3 Kapseln → danach 2</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-forest-100">
+              <span>Bis 100 kg</span><span class="font-medium">1. Woche: 4 Kapseln → danach 3</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span>Über 100 kg</span><span class="font-medium">1. Woche: 6 Kapseln → danach 4</span>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-earth-500">An einem Wochenende anfangen – man kann müde davon werden.</p>
+        </div>
+
+        <h2 class="font-serif text-2xl font-semibold text-earth-900 pt-4">Erfahrungen unserer Nutzer</h2>
+        <div class="space-y-4">
+          {[
+            'Ich war total überrascht, wie gut sich das Microdosing schon nach ein paar Tagen angefühlt hat.',
+            'Ich habe mit kleinen Mengen Iboga meine Nikotinsucht besiegt – ich konnte auf einmal ganz leicht darauf verzichten.',
+            'Iboga hat mir in einer Nacht so viel Altlasten von den Schultern genommen, 10 Jahre Therapie haben das nicht hinbekommen.',
+          ].map(quote => (
+            <blockquote class="bg-white border border-earth-200 rounded-xl p-5 shadow-sm">
+              <p class="text-earth-700 italic text-sm">„{quote}"</p>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <img src="/images/microdosing.jpg" alt="Iboga Microdosing" class="w-full rounded-2xl object-cover shadow-md" style="aspect-ratio: 3/4; object-fit: cover;" />
+        <div class="bg-white border border-earth-200 rounded-xl p-5 shadow-sm">
+          <h3 class="font-semibold text-earth-900 mb-3">Produkte kaufen</h3>
+          <p class="text-sm text-earth-600 mb-4">Hochwertige Iboga Wurzelrinde von nachhaltigen Plantagen in Ghana und Kamerun.</p>
+          <a
+            href="https://iboga.store"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-center px-4 py-2.5 bg-forest-600 text-white text-sm font-medium rounded-lg hover:bg-forest-700 transition-colors"
+          >
+            Zum Iboga Store ↗
+          </a>
+        </div>
+        <div class="bg-earth-50 border border-earth-200 rounded-xl p-5">
+          <h3 class="font-semibold text-earth-900 mb-2">Nächste Schritte</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/wichtigste-infos" class="text-forest-600 hover:text-forest-800">→ Wichtigste Infos lesen</a></li>
+            <li><a href="/fullflood" class="text-forest-600 hover:text-forest-800">→ Über Fullflood erfahren</a></li>
+            <li><a href="/behandlung" class="text-forest-600 hover:text-forest-800">→ Behandlung anfragen</a></li>
+            <li><a href="/kontakt" class="text-forest-600 hover:text-forest-800">→ Kontakt aufnehmen</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>

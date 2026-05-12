@@ -1,0 +1,137 @@
+---
+import { useTranslations, type Locale, LOCALES } from '../i18n/translations';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+function prefix(path: string) {
+  return lang === 'de' ? path : `/${lang}${path}`;
+}
+
+const langLabels: Record<Locale, string> = { de: 'DE', en: 'EN', fr: 'FR', es: 'ES' };
+
+const currentPath = Astro.url.pathname;
+function isActive(path: string) {
+  return currentPath === prefix(path) || currentPath === prefix(path) + '/';
+}
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-earth-100 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={prefix('/')} class="flex items-center gap-3 group">
+        <img src="/images/logo.png" alt="Iboga.shop" class="h-9 w-9 rounded-full object-cover" />
+        <span class="font-serif font-semibold text-earth-800 text-lg group-hover:text-forest-700 transition-colors">
+          iboga<span class="text-forest-600">.shop</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-1">
+        {[
+          { key: 'nav.microdosing', path: '/microdosing' },
+          { key: 'nav.infos', path: '/wichtigste-infos' },
+          { key: 'nav.fullflood', path: '/fullflood' },
+          { key: 'nav.treatment', path: '/behandlung' },
+          { key: 'nav.blog', path: '/blog' },
+          { key: 'nav.videos', path: '/videos' },
+          { key: 'nav.contact', path: '/kontakt' },
+        ].map(({ key, path }) => (
+          <a
+            href={prefix(path)}
+            class={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+              isActive(path)
+                ? 'bg-forest-50 text-forest-700'
+                : 'text-earth-700 hover:text-forest-700 hover:bg-forest-50'
+            }`}
+          >
+            {t(key as any)}
+          </a>
+        ))}
+        <a
+          href="https://iboga.store"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-2 px-4 py-2 bg-forest-600 text-white text-sm font-medium rounded-md hover:bg-forest-700 transition-colors"
+        >
+          {t('nav.shop')} ↗
+        </a>
+      </nav>
+
+      <!-- Language Switcher + Mobile Menu -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 border border-earth-200 rounded-md p-1">
+          {LOCALES.map((locale) => {
+            const href = locale === 'de'
+              ? currentPath.replace(/^\/(en|fr|es)/, '') || '/'
+              : `/${locale}${currentPath.replace(/^\/(en|fr|es)/, '') || '/'}`;
+            return (
+              <a
+                href={href}
+                class={`px-2 py-1 text-xs font-medium rounded transition-colors ${
+                  locale === lang
+                    ? 'bg-forest-600 text-white'
+                    : 'text-earth-600 hover:text-forest-700'
+                }`}
+              >
+                {langLabels[locale]}
+              </a>
+            );
+          })}
+        </div>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 rounded-md text-earth-700 hover:text-forest-700 hover:bg-forest-50"
+          aria-label="Menu"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav id="mobile-menu" class="hidden lg:hidden pb-4 border-t border-earth-100 pt-3">
+      <div class="flex flex-col gap-1">
+        {[
+          { key: 'nav.microdosing', path: '/microdosing' },
+          { key: 'nav.infos', path: '/wichtigste-infos' },
+          { key: 'nav.fullflood', path: '/fullflood' },
+          { key: 'nav.treatment', path: '/behandlung' },
+          { key: 'nav.blog', path: '/blog' },
+          { key: 'nav.videos', path: '/videos' },
+          { key: 'nav.contact', path: '/kontakt' },
+        ].map(({ key, path }) => (
+          <a
+            href={prefix(path)}
+            class="px-3 py-2 text-sm font-medium text-earth-700 hover:text-forest-700 rounded-md hover:bg-forest-50 transition-colors"
+          >
+            {t(key as any)}
+          </a>
+        ))}
+        <a
+          href="https://iboga.store"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 px-4 py-2 bg-forest-600 text-white text-sm font-medium rounded-md text-center"
+        >
+          {t('nav.shop')} ↗
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Microdosage Iboga – Doux et efficace" description="Microdosage avec l'écorce de racine d'iboga : trouver le bon dosage, commencer doucement, vivre des changements profonds." image="/images/microdosing.jpg" locale="fr">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <header class="mb-10">
+      <h1 class="font-serif text-4xl font-semibold text-earth-900">Microdosage</h1>
+      <p class="mt-4 text-xl text-earth-600">Trouvez le bon dosage. N'ayez pas peur – explorez !</p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 space-y-6 text-earth-700 leading-relaxed">
+        <h2 class="font-serif text-2xl font-semibold text-earth-900">Qu'est-ce que le microdosage ?</h2>
+        <p>L'iboga et d'autres psychédéliques comme la psilocybine, l'ibogaïne, la mescaline ou l'ayahuasca sont de plus en plus consommés en petites doses, non psychoactives, pour améliorer les performances ou lutter contre la dépression et l'anxiété. Les premières études montrent des améliorations dans les tests de pensée et de créativité.</p>
+        <h2 class="font-serif text-2xl font-semibold text-earth-900 pt-4">Comment le microdosage se ressent-il ?</h2>
+        <p>Cela ressemble à un retour à la maison. Vous êtes centré d'une manière qui est totalement étrangère à votre état habituel – et pourtant tellement naturelle. Vous êtes pleinement <em>compos mentis</em>, capable de poursuivre vos activités quotidiennes avec un sentiment de paix et de non-jugement.</p>
+        <div class="bg-forest-50 border border-forest-200 rounded-xl p-6">
+          <h3 class="font-semibold text-forest-800 mb-3">Exemple de dosage</h3>
+          <p class="text-sm text-forest-700 mb-4">Produit : Gélules d'écorce de racine 450mg / 4–5% ibogaïne</p>
+          <div class="space-y-2 text-sm">
+            {[['Jusqu\'à 60 kg', '1re semaine : 2 gélules → puis 1'],['Jusqu\'à 80 kg', '1re semaine : 3 gélules → puis 2'],['Jusqu\'à 100 kg', '1re semaine : 4 gélules → puis 3']].map(([w,d]) => (
+              <div class="flex justify-between py-2 border-b border-forest-100"><span>{w}</span><span class="font-medium">{d}</span></div>
+            ))}
+          </div>
+        </div>
+        <div class="space-y-4">
+          {['J\'ai été totalement surpris de me sentir aussi bien après seulement quelques jours de microdosage.','J\'ai vaincu mon addiction à la nicotine avec de petites quantités d\'iboga – j\'ai soudainement pu y renoncer facilement.','L\'iboga m\'a soulagé d\'un tel poids en une seule nuit – 10 ans de thérapie n\'y avaient pas réussi.'].map(quote => (
+            <blockquote class="bg-white border border-earth-200 rounded-xl p-5 shadow-sm"><p class="text-earth-700 italic text-sm">« {quote} »</p></blockquote>
+          ))}
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <img src="/images/microdosing.jpg" alt="Microdosage Iboga" class="w-full rounded-2xl object-cover shadow-md" style="aspect-ratio: 3/4; object-fit: cover;" />
+        <a href="https://iboga.store" target="_blank" rel="noopener noreferrer" class="block text-center px-4 py-2.5 bg-forest-600 text-white text-sm font-medium rounded-lg hover:bg-forest-700 transition-colors">
+          Visiter Iboga Store ↗
+        </a>
+      </aside>
+    </div>
+  </div>
+</Layout>

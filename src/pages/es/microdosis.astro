@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Microdosis de Iboga – Suave y eficaz" description="Microdosis con corteza de raíz de iboga: encontrar la dosis correcta, comenzar suavemente, experimentar cambios profundos." image="/images/microdosing.jpg" locale="es">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <header class="mb-10">
+      <h1 class="font-serif text-4xl font-semibold text-earth-900">Microdosis</h1>
+      <p class="mt-4 text-xl text-earth-600">Encuentra la dosis correcta. ¡No tengas miedo, explora!</p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 space-y-6 text-earth-700 leading-relaxed">
+        <h2 class="font-serif text-2xl font-semibold text-earth-900">¿Qué significa realmente la microdosis?</h2>
+        <p>El iboga y otros psicodélicos como la psilocibina, la ibogaína, la mescalina o la ayahuasca se toman cada vez más en pequeñas dosis no psicoactivas para mejorar el rendimiento o combatir la depresión y la ansiedad. Los primeros estudios muestran mejoras en las pruebas de pensamiento y creatividad.</p>
+        <h2 class="font-serif text-2xl font-semibold text-earth-900 pt-4">¿Cómo se siente la microdosis?</h2>
+        <p>Se siente como volver a casa. Estás centrado de una manera que es completamente ajena a tu estado habitual de ser – y sin embargo tan natural. Eres completamente <em>compos mentis</em>, capaz de continuar tus actividades diarias con una sensación de paz y sin juicio hacia ti mismo.</p>
+
+        <h2 class="font-serif text-2xl font-semibold text-earth-900 pt-4">IBOGA MICRODOSIS CON CORTEZA DE RAÍZ</h2>
+        <p>Una microdosis de IBOGA te da una sensación de claridad mental, conciencia y fácil acceso al subconsciente, permitiéndote encontrar una solución a preguntas sin respuesta, traumas no integrados, emociones bloqueadas y creencias limitantes.</p>
+
+        <div class="bg-forest-50 border border-forest-200 rounded-xl p-6">
+          <h3 class="font-semibold text-forest-800 mb-3">Ejemplo de dosificación</h3>
+          <p class="text-sm text-forest-700 mb-4">Producto: Cápsulas de corteza de raíz 450mg / 4–5% ibogaína</p>
+          <div class="space-y-2 text-sm">
+            {[['Hasta 60 kg','1ª semana: 2 cápsulas → luego 1'],['Hasta 80 kg','1ª semana: 3 cápsulas → luego 2'],['Hasta 100 kg','1ª semana: 4 cápsulas → luego 3']].map(([w,d]) => (
+              <div class="flex justify-between py-2 border-b border-forest-100"><span>{w}</span><span class="font-medium">{d}</span></div>
+            ))}
+          </div>
+        </div>
+        <div class="space-y-4">
+          {['Me sorprendió totalmente lo bien que me sentí después de solo unos días de microdosis.','Vencí mi adicción a la nicotina con pequeñas cantidades de iboga – de repente pude renunciar a ella fácilmente.','El iboga me quitó tanto peso de encima en una sola noche – 10 años de terapia no lo habían logrado.'].map(quote => (
+            <blockquote class="bg-white border border-earth-200 rounded-xl p-5 shadow-sm"><p class="text-earth-700 italic text-sm">"{quote}"</p></blockquote>
+          ))}
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <img src="/images/microdosing.jpg" alt="Microdosis Iboga" class="w-full rounded-2xl object-cover shadow-md" style="aspect-ratio: 3/4; object-fit: cover;" />
+        <a href="https://iboga.store" target="_blank" rel="noopener noreferrer" class="block text-center px-4 py-2.5 bg-forest-600 text-white text-sm font-medium rounded-lg hover:bg-forest-700 transition-colors">
+          Visitar Iboga Store ↗
+        </a>
+      </aside>
+    </div>
+  </div>
+</Layout>

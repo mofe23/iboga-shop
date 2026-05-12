@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iboga.shop/sitemap-index.xml

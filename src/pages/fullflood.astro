@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Iboga Fullflood Behandlung – Was du wissen musst"
+  description="Was ist eine Iboga Fullflood? Wirkung, Dosierung, Vorbereitung und was dich bei einer professionellen Behandlung erwartet."
+  image="/images/fullflood-experience.jpg"
+  locale="de"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <header class="mb-10">
+      <h1 class="font-serif text-4xl font-semibold text-earth-900">Iboga Fullflood Behandlung</h1>
+      <p class="mt-4 text-xl text-earth-600">
+        Eine IBOGA Fullflood Behandlung wird hier im Westen meist für Entgiftungen angewandt.
+        Mir ist nichts bekannt, das uns so sehr unterstützt auf dem Weg der Heilung wie Iboga.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 space-y-8 text-earth-700 leading-relaxed">
+
+        <section>
+          <h2 class="font-serif text-2xl font-semibold text-earth-900 mb-3">Was heißt Fullflood?</h2>
+          <p>
+            Bei einer Fullflood wird das ganze Gehirn und alle Rezeptoren mit Iboga geflutet. Es ist
+            eine intensive, aber tiefgreifend heilsame Erfahrung. Ein paar Tage nach der Behandlung
+            fühlt man sich wirklich verbunden – mit sich selbst und der Welt.
+          </p>
+          <p>
+            Iboga ist für einige Menschen die letzte Hoffnung. Und es wird ihnen nicht enttäuschen,
+            wenn sie es mit der richtigen Vorbereitung und Begleitung angehen.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-serif text-2xl font-semibold text-earth-900 mb-3">Verfügbare Produkte</h2>
+          <div class="space-y-4">
+            {[
+              { name: 'IBOGAIN HCl 98%', color: 'bg-white', desc: 'Chemisch stabil, weißes Pulver. Geeignet für Entgiftungen. Reine Substanz ohne weitere Alkaloide.' },
+              { name: 'Total Alkaloid (TA) 50%', color: 'bg-earth-50', desc: 'Braunes Pulver, enthält den vollen Pflanzengeist. Für spirituelle Arbeit und ganzheitliche Heilung.' },
+              { name: 'PTA 95%', color: 'bg-white', desc: 'Beige, gefiltert. Zwischen HCl und TA – gute Balance aus Reinheit und Pflanzenspektrum.' },
+              { name: 'Wurzelrinde', color: 'bg-earth-50', desc: 'Natürlichste Form, alle Alkaloide. Ideal für Microdosing und sanfte Arbeit.' },
+            ].map(({ name, color, desc }) => (
+              <div class={`${color} border border-earth-200 rounded-xl p-5`}>
+                <h3 class="font-semibold text-earth-900">{name}</h3>
+                <p class="text-sm text-earth-600 mt-1">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 class="font-serif text-2xl font-semibold text-earth-900 mb-3">Dosierungsrichtlinien</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead>
+                <tr class="bg-forest-800 text-white">
+                  <th class="px-4 py-3 text-left">Intention</th>
+                  <th class="px-4 py-3 text-left">Dosierung (pro kg Körpergewicht)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-earth-100">
+                {[
+                  ['Sanft / leicht', '×0,020 mg/kg'],
+                  ['Depression / Angst / Trauma', '×0,030 mg/kg'],
+                  ['Schweres Trauma / Suchtentgiftung', '×0,050 mg/kg'],
+                ].map(([intent, dose], i) => (
+                  <tr class={i % 2 === 0 ? 'bg-white' : 'bg-earth-50'}>
+                    <td class="px-4 py-3 text-earth-800">{intent}</td>
+                    <td class="px-4 py-3 font-mono text-earth-600">{dose}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="font-serif text-2xl font-semibold text-earth-900 mb-3">Kosten & Kliniken</h2>
+          <p>
+            Iboga-Kliniken in Portugal beginnen bei ca. €6.000; in Serbien ab ca. €5.000
+            (jedoch nicht empfohlen). Die private Begleitung durch Iboga Germany ist
+            deutlich günstiger – schreib eine E-Mail für ein individuelles Angebot.
+          </p>
+          <div class="bg-forest-50 border border-forest-200 rounded-xl p-5 mt-4">
+            <p class="text-forest-800 text-sm font-medium mb-2">Empfehlung</p>
+            <p class="text-forest-700 text-sm">
+              Bevor du eine Fullflood machst, probiere zuerst das{' '}
+              <a href="/microdosing" class="underline text-forest-600 hover:text-forest-800">Microdosing</a>.
+              So lernst du sanft, wie Iboga zu dir spricht.
+            </p>
+          </div>
+        </section>
+
+        <div class="bg-earth-100 rounded-xl p-6">
+          <p class="text-earth-500 text-xs font-medium uppercase tracking-wider">Wichtiger Hinweis</p>
+          <p class="mt-2 text-earth-700 text-sm">
+            Eine Fullflood sollte niemals ohne professionelle Begleitung durchgeführt werden.
+            Kontaktiere uns für ein Gespräch bevor du planst.
+          </p>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <img src="/images/fullflood-experience.jpg" alt="Fullflood Erfahrung" class="w-full rounded-2xl object-cover shadow-md aspect-square" />
+        <a
+          href="/kontakt"
+          class="block text-center px-4 py-3 bg-forest-600 text-white font-medium rounded-xl hover:bg-forest-700 transition-colors"
+        >
+          Behandlung anfragen
+        </a>
+        <div class="bg-white border border-earth-200 rounded-xl p-5 shadow-sm text-sm space-y-3">
+          <h3 class="font-semibold text-earth-900">Erfahrungsberichte</h3>
+          <a href="/blog/erfahrungsbericht-fullflood" class="block text-forest-600 hover:text-forest-800">→ Erfahrungsbericht: Fullflood Ostern 2021</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>

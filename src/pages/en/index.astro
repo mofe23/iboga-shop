@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+const lang = 'en';
+
+const posts = [
+  {
+    slug: 'key-information-about-iboga',
+    title: 'KEY INFORMATION ABOUT IBOGA',
+    excerpt: 'What is iboga? What can I use iboga for? How does iboga work? We answer the most frequently asked questions about iboga – from effects and dosage to safety.',
+    image: '/images/iboga-infos.jpg',
+    date: 'July 23, 2023',
+  },
+  {
+    slug: 'iboga-microdosing-with-root-bark',
+    title: 'IBOGA – MICRODOSING WITH ROOT BARK',
+    excerpt: 'Microdosing can lead to profound internal shifts. It feels like coming home – centred, clear, in your most authentic state.',
+    image: '/images/microdosing.jpg',
+    date: 'July 25, 2023',
+  },
+  {
+    slug: 'report-of-a-fullflood-experience',
+    title: 'Report of a Full Flood Experience',
+    excerpt: 'A personal account of my first iboga full flood treatment during the Easter treatment of Della/IBOGAGermany in April 2021 in Hesse.',
+    image: '/images/fullflood-experience.jpg',
+    date: 'September 15, 2023',
+  },
+];
+---
+
+<Layout
+  title="Iboga Treatment in Germany – Information, Guidance & Appointments"
+  description="Information, accompaniment and appointments for iboga treatments in Germany. Safe, professional, and sustainable."
+  locale="en"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-earth-900">
+    <div class="absolute inset-0">
+      <img src="/images/iboga-nature-2.jpg" alt="Iboga Nature" class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-br from-earth-900/90 via-earth-900/70 to-forest-900/80"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24">
+      <div class="max-w-2xl">
+        <span class="inline-block px-3 py-1 bg-forest-600/30 text-forest-300 text-sm font-medium rounded-full mb-6 border border-forest-600/40">
+          Iboga.shop
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
+          Iboga Treatment<br />
+          <span class="text-forest-400">in Germany</span>
+        </h1>
+        <p class="mt-6 text-lg text-earth-300 leading-relaxed">
+          Information, guidance & appointments for iboga treatments. Safe preparation, individual support.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/en/key-info" class="px-6 py-3 bg-forest-600 text-white font-medium rounded-lg hover:bg-forest-700 transition-colors">
+            Learn More
+          </a>
+          <a href="/en/treatment" class="px-6 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-colors border border-white/20">
+            Book Treatment
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="bg-white border-b border-earth-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        {[
+          { icon: '🌿', title: 'Sustainable Sources', text: 'Iboga from our own plantation in Ghana – fair and sustainable' },
+          { icon: '🛡️', title: 'Safe & Guided', text: 'Professional round-the-clock support' },
+          { icon: '🌍', title: 'Multilingual', text: 'Information in German, English, French and Spanish' },
+        ].map(({ icon, title, text }) => (
+          <div class="flex flex-col items-center gap-2 py-4">
+            <span class="text-3xl">{icon}</span>
+            <h3 class="font-semibold text-earth-800">{title}</h3>
+            <p class="text-sm text-earth-500">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-serif text-3xl font-semibold text-earth-900">What is Iboga?</h2>
+        <div class="mt-6 space-y-4 text-earth-700 leading-relaxed">
+          <p>
+            Iboga is a plant from Central Africa. It contains the psychoactive compound ibogaine.
+            Ibogaine can cause significant physical and psychological changes.
+          </p>
+          <p>
+            It is primarily used to reduce or eliminate cravings and withdrawal symptoms in patients
+            suffering from addiction. It can also create profound and potentially life-changing
+            experiences in anyone.
+          </p>
+          <p>
+            Iboga supports personal and spiritual development, mindfulness, cleansing, and shadow work.
+          </p>
+        </div>
+        <div class="mt-8 flex gap-4">
+          <a href="/en/key-info" class="px-5 py-2.5 bg-forest-600 text-white text-sm font-medium rounded-lg hover:bg-forest-700 transition-colors">
+            Key Information →
+          </a>
+          <a href="/en/microdosing" class="px-5 py-2.5 border border-earth-300 text-earth-700 text-sm font-medium rounded-lg hover:border-forest-400 hover:text-forest-700 transition-colors">
+            Explore Microdosing
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <img src="/images/iboga-plant.jpg" alt="Tabernanthe Iboga Plant" class="rounded-2xl shadow-lg w-full object-cover aspect-square" />
+        <div class="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-md p-4 max-w-[200px]">
+          <p class="text-xs text-earth-500 font-medium uppercase tracking-wider">Tabernanthe Iboga</p>
+          <p class="text-sm text-earth-800 mt-1">Central African healing plant with psychoactive properties</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="flex items-end justify-between mb-8">
+      <h2 class="font-serif text-3xl font-semibold text-earth-900">Latest Articles</h2>
+      <a href="/en/blog" class="text-forest-600 text-sm font-medium hover:text-forest-800 transition-colors">View all →</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {posts.map(post => <BlogCard lang={lang} {...post} />)}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-forest-900 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-serif text-3xl font-semibold">Start gently with Microdosing</h2>
+      <p class="mt-4 text-forest-200 leading-relaxed max-w-2xl mx-auto">
+        Before attempting a flood dose, we recommend trying microdosing with root bark first.
+        You can gently learn how iboga speaks to you and already make great progress.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/en/microdosing" class="px-6 py-3 bg-white text-forest-900 font-medium rounded-lg hover:bg-forest-50 transition-colors">
+          Microdosing Guide →
+        </a>
+        <a href="https://iboga.store/en" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-forest-600 text-white font-medium rounded-lg hover:bg-forest-700 transition-colors border border-forest-500">
+          Buy Products ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Della quote -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div class="md:col-span-1">
+        <img src="/images/della-portrait.jpg" alt="Della – IBOGAGermany" class="rounded-2xl w-full object-cover aspect-square shadow-md" />
+      </div>
+      <blockquote class="md:col-span-2">
+        <div class="text-4xl text-forest-300 font-serif leading-none mb-4">"</div>
+        <p class="text-earth-700 text-lg leading-relaxed italic font-serif">
+          I am someone who, like many others, fought for years and only found the inner peace
+          needed for healing through ibogaine. I simply could not keep this incredible knowledge
+          to myself – I had to share it with others.
+        </p>
+        <footer class="mt-6">
+          <cite class="not-italic">
+            <strong class="text-earth-900 font-semibold">Della</strong>
+            <span class="text-earth-500 text-sm ml-2">– Founder of IBOGA Germany</span>
+          </cite>
+          <p class="text-earth-500 text-sm mt-1">Active in ibogaine harm reduction since 2012</p>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+</Layout>

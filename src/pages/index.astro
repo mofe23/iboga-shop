@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+const lang = 'de';
+
+const posts = [
+  {
+    slug: 'iboga-die-wichtigsten-infos',
+    title: 'IBOGA – DIE WICHTIGSTEN INFOS',
+    excerpt: 'Was ist Iboga? Wozu kann ich Iboga verwenden? Wie wirkt Iboga? Wir beantworten die häufigsten Fragen zum Thema Iboga – von der Wirkung über Dosierung bis hin zur Sicherheit.',
+    image: '/images/iboga-infos.jpg',
+    date: '23. Juli 2023',
+  },
+  {
+    slug: 'iboga-microdosing-mit-wurzelrinde',
+    title: 'IBOGA – MICRODOSING MIT WURZELRINDE',
+    excerpt: 'Mikrodosierung kann zu tiefgreifenden inneren Verschiebungen führen. Es fühlt sich an, als seien Sie nach Hause gekommen – zentriert, klar, in Ihrem wahrhaftigsten Zustand.',
+    image: '/images/microdosing.jpg',
+    date: '25. Juli 2023',
+  },
+  {
+    slug: 'professionelle-iboga-behandlung',
+    title: 'PROFESSIONELLE IBOGA-BEHANDLUNG',
+    excerpt: 'Iboga gehört nicht in ein Krankenhaus! Ein 4-tägiges professionelles Setting in der Natur – rund um die Uhr betreut von erfahrenen Begleitern. Die nachhaltigste Variante.',
+    image: '/images/professional-treatment.jpg',
+    date: '1. August 2023',
+  },
+  {
+    slug: 'erfahrungsbericht-fullflood',
+    title: 'Erfahrungsbericht: Eine Fullflood Erfahrung',
+    excerpt: 'Ein persönlicher Bericht über meine erste Iboga Full Flood Behandlung bei Della/IBOGAGermany. Die aussergewöhnlichste Erfahrung meines bisherigen Lebens.',
+    image: '/images/fullflood-experience.jpg',
+    date: '15. September 2023',
+  },
+];
+---
+
+<Layout
+  title="Iboga Treatment in Deutschland – Infos, Begleitung & Termine"
+  description="Informationen, Begleitung und Termine für Iboga-Behandlungen in Deutschland. Sicher, professionell und nachhaltig."
+  locale="de"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-earth-900">
+    <div class="absolute inset-0">
+      <img
+        src="/images/iboga-nature-2.jpg"
+        alt="Iboga Natur"
+        class="w-full h-full object-cover opacity-30"
+      />
+      <div class="absolute inset-0 bg-gradient-to-br from-earth-900/90 via-earth-900/70 to-forest-900/80"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24">
+      <div class="max-w-2xl">
+        <span class="inline-block px-3 py-1 bg-forest-600/30 text-forest-300 text-sm font-medium rounded-full mb-6 border border-forest-600/40">
+          Iboga.shop
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
+          Iboga Treatment<br />
+          <span class="text-forest-400">in Deutschland</span>
+        </h1>
+        <p class="mt-6 text-lg text-earth-300 leading-relaxed">
+          Informationen, Begleitung & Termine für Iboga-Behandlungen.
+          Sicher vorbereitet, individuell begleitet.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="/wichtigste-infos"
+            class="px-6 py-3 bg-forest-600 text-white font-medium rounded-lg hover:bg-forest-700 transition-colors"
+          >
+            Jetzt informieren
+          </a>
+          <a
+            href="/behandlung"
+            class="px-6 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-colors border border-white/20"
+          >
+            Behandlung buchen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features strip -->
+  <section class="bg-white border-b border-earth-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        {[
+          { icon: '🌿', title: 'Nachhaltige Quellen', text: 'Iboga von eigener Plantage in Ghana – fair und nachhaltig' },
+          { icon: '🛡️', title: 'Sicher & begleitet', text: 'Professionelle Begleitung rund um die Uhr' },
+          { icon: '🌍', title: 'Mehrsprachig', text: 'Informationen auf Deutsch, Englisch, Französisch und Spanisch' },
+        ].map(({ icon, title, text }) => (
+          <div class="flex flex-col items-center gap-2 py-4">
+            <span class="text-3xl">{icon}</span>
+            <h3 class="font-semibold text-earth-800">{title}</h3>
+            <p class="text-sm text-earth-500">{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Iboga intro -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-serif text-3xl font-semibold text-earth-900 leading-snug">
+          Was ist Iboga?
+        </h2>
+        <div class="mt-6 space-y-4 text-earth-700 leading-relaxed">
+          <p>
+            Iboga ist eine Pflanze aus Zentralafrika. Sie enthält den psychoaktiven Wirkstoff Ibogain.
+            Ibogain kann große körperliche und psychische Veränderungen verursachen.
+          </p>
+          <p>
+            Es wird meist dazu verwendet, Heißhunger und andere Entzugssymptome bei Patienten,
+            die an Suchterkrankungen leiden, zu reduzieren oder zu entfernen. Außerdem kann es
+            tiefgreifende Änderungen in Menschen bewirken.
+          </p>
+          <p>
+            Iboga unterstützt die persönliche und spirituelle Entwicklung, Achtsamkeit, Reinigung
+            und Schattenarbeit.
+          </p>
+        </div>
+        <div class="mt-8 flex gap-4">
+          <a
+            href="/wichtigste-infos"
+            class="px-5 py-2.5 bg-forest-600 text-white text-sm font-medium rounded-lg hover:bg-forest-700 transition-colors"
+          >
+            Alle wichtigen Infos →
+          </a>
+          <a
+            href="/microdosing"
+            class="px-5 py-2.5 border border-earth-300 text-earth-700 text-sm font-medium rounded-lg hover:border-forest-400 hover:text-forest-700 transition-colors"
+          >
+            Microdosing entdecken
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <img
+          src="/images/iboga-plant.jpg"
+          alt="Tabernanthe Iboga Pflanze"
+          class="rounded-2xl shadow-lg w-full object-cover aspect-square"
+        />
+        <div class="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-md p-4 max-w-[200px]">
+          <p class="text-xs text-earth-500 font-medium uppercase tracking-wider">Tabernanthe Iboga</p>
+          <p class="text-sm text-earth-800 mt-1">Zentralafrikanische Heilpflanze mit psychoaktiven Eigenschaften</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog posts -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+    <div class="flex items-end justify-between mb-8">
+      <h2 class="font-serif text-3xl font-semibold text-earth-900">Aktuelle Beiträge</h2>
+      <a href="/blog" class="text-forest-600 text-sm font-medium hover:text-forest-800 transition-colors">
+        Alle ansehen →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {posts.map(post => (
+        <BlogCard lang={lang} {...post} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Microdosing CTA -->
+  <section class="bg-forest-900 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-serif text-3xl font-semibold">Sanft starten mit Microdosing</h2>
+      <p class="mt-4 text-forest-200 leading-relaxed max-w-2xl mx-auto">
+        Bevor man eine Flooddose macht, empfehlen wir jedem, erstmal Microdosing mit Wurzelrinde
+        auszuprobieren. Man kann so ganz sanft lernen, wie Iboga zu einem spricht und bereits
+        große Fortschritte machen.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          href="/microdosing"
+          class="px-6 py-3 bg-white text-forest-900 font-medium rounded-lg hover:bg-forest-50 transition-colors"
+        >
+          Microdosing Guide →
+        </a>
+        <a
+          href="https://iboga.store"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 bg-forest-600 text-white font-medium rounded-lg hover:bg-forest-700 transition-colors border border-forest-500"
+        >
+          Produkte kaufen ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Della quote -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div class="md:col-span-1">
+        <img
+          src="/images/della-portrait.jpg"
+          alt="Della – IBOGAGermany"
+          class="rounded-2xl w-full object-cover aspect-square shadow-md"
+        />
+      </div>
+      <blockquote class="md:col-span-2">
+        <div class="text-4xl text-forest-300 font-serif leading-none mb-4">"</div>
+        <p class="text-earth-700 text-lg leading-relaxed italic font-serif">
+          Ich bin jemand, der wie viele andere schon jahrelang gekämpft hat und erst durch Ibogain
+          den nötigen inneren Frieden für die Heilung gefunden hat. Dieses unglaubliche Wissen
+          konnte ich doch nicht nur für mich behalten – das musste ich auch anderen erzählen
+          und verbreiten.
+        </p>
+        <footer class="mt-6">
+          <cite class="not-italic">
+            <strong class="text-earth-900 font-semibold">Della</strong>
+            <span class="text-earth-500 text-sm ml-2">– Gründerin von IBOGA Germany</span>
+          </cite>
+          <p class="text-earth-500 text-sm mt-1">Aktiv in der Ibogain-Hilfe seit 2012</p>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+</Layout>

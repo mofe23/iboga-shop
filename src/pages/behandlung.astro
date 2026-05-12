@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Iboga Behandlung buchen – Iboga Germany"
+  description="Professionelle Iboga-Behandlung in der Natur. 4 Tage, rund um die Uhr begleitet. Kontaktiere Iboga Germany für ein persönliches Angebot."
+  image="/images/professional-treatment.jpg"
+  locale="de"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <header class="mb-10">
+      <h1 class="font-serif text-4xl font-semibold text-earth-900">Behandlung buchen</h1>
+      <p class="mt-4 text-xl text-earth-600">
+        Professionelle Iboga-Begleitung – individuell, persönlich, in der Natur.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div>
+        <img src="/images/professional-treatment.jpg" alt="Iboga Behandlung" class="w-full rounded-2xl object-cover shadow-md aspect-video mb-6" />
+
+        <div class="space-y-6">
+          <section>
+            <h2 class="font-serif text-xl font-semibold text-earth-900 mb-3">Das Setting</h2>
+            <p class="text-earth-700 text-sm leading-relaxed">
+              Ein Haus oder Hotel in der Natur für 4 Tage gemietet. 2 Menschen kümmern sich
+              abwechselnd rund um die Uhr nur um dich. Eine Person sitzt immer neben deinem Bett,
+              bringt dich zur Toilette und unterstützt dich bei allem, was du brauchst.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-serif text-xl font-semibold text-earth-900 mb-3">Vorbereitung</h2>
+            <p class="text-earth-700 text-sm leading-relaxed">
+              Wir empfehlen dir, vor einer Fullflood-Behandlung zuerst{' '}
+              <a href="/microdosing" class="text-forest-600 hover:text-forest-800 underline">Microdosing</a>
+              {' '}auszuprobieren. So lernst du sanft, wie Iboga zu dir spricht.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-serif text-xl font-semibold text-earth-900 mb-3">Max. Teilnehmerzahl</h2>
+            <p class="text-earth-700 text-sm">Maximal 5 Teilnehmer pro Behandlung. Vegetarisches/veganes Essen inklusive.</p>
+          </section>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-white border border-earth-200 rounded-2xl p-8 shadow-sm">
+          <h2 class="font-serif text-2xl font-semibold text-earth-900 mb-6">Kontakt aufnehmen</h2>
+          <div class="space-y-4">
+            <p class="text-earth-700 text-sm leading-relaxed">
+              Schreibe uns eine E-Mail mit deiner Situation, deinen Fragen und wann du dir
+              eine Behandlung vorstellen könntest. Wir melden uns persönlich bei dir.
+            </p>
+            <a
+              href="mailto:ibogagermany@protonmail.com"
+              class="flex items-center gap-3 p-4 bg-forest-50 border border-forest-200 rounded-xl hover:bg-forest-100 transition-colors group"
+            >
+              <svg class="w-5 h-5 text-forest-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div>
+                <p class="font-medium text-forest-800 group-hover:text-forest-900">ibogagermany@protonmail.com</p>
+                <p class="text-xs text-forest-600">Persönliche Antwort innerhalb von 48 Stunden</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-earth-50 border border-earth-200 rounded-2xl p-6">
+          <h3 class="font-semibold text-earth-900 mb-4">Was dich erwartet</h3>
+          <ul class="space-y-3 text-sm text-earth-700">
+            {[
+              '🏡 Haus in der Natur für 4 Tage',
+              '👥 2 erfahrene Begleiter rund um die Uhr',
+              '🌿 Vegetarische / vegane Mahlzeiten',
+              '🧘 Meditation und Yoga',
+              '🔥 Rituale: Feuer, Erde, Wasser, Wind',
+              '📱 Handy-Detox (empfohlen)',
+              '👕 Weiße Kleidung für die Behandlung',
+            ].map(item => (
+              <li class="flex items-start gap-2">
+                <span>{item.split(' ')[0]}</span>
+                <span>{item.split(' ').slice(1).join(' ')}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

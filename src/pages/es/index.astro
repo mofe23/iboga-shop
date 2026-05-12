@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+const lang = 'es';
+const posts = [
+  { slug: 'microdosis-iboga', title: 'IBOGA – MICRODOSIS CON CORTEZA DE RAÍZ', excerpt: 'La microdosis puede conducir a cambios internos profundos. Se siente como volver a casa – centrado, claro, en tu estado más auténtico.', image: '/images/microdosing.jpg', date: '25 de julio de 2023' },
+  { slug: 'informacion-iboga', title: 'IBOGA – INFORMACIÓN CLAVE', excerpt: '¿Qué es el iboga? ¿Para qué puedo utilizarlo? ¿Cómo actúa? Respondemos las preguntas más frecuentes sobre el iboga.', image: '/images/iboga-infos.jpg', date: '23 de julio de 2023' },
+];
+---
+
+<Layout title="Tratamiento con Iboga en Alemania – Información, Acompañamiento & Citas" description="Información, acompañamiento y citas para tratamientos con iboga en Alemania. Seguro, profesional y sostenible." locale="es">
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden bg-earth-900">
+    <div class="absolute inset-0">
+      <img src="/images/iboga-nature-2.jpg" alt="Iboga Naturaleza" class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-br from-earth-900/90 via-earth-900/70 to-forest-900/80"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20">
+      <div class="max-w-2xl">
+        <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-white leading-tight">
+          Tratamiento con Iboga<br /><span class="text-forest-400">en Alemania</span>
+        </h1>
+        <p class="mt-6 text-lg text-earth-300">Información, acompañamiento y citas para tratamientos con iboga.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/es/microdosis" class="px-6 py-3 bg-forest-600 text-white font-medium rounded-lg hover:bg-forest-700 transition-colors">Más información</a>
+          <a href="/es/contacto" class="px-6 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-colors border border-white/20">Contactar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <h2 class="font-serif text-3xl font-semibold text-earth-900 mb-8">Artículos recientes</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {posts.map(post => <BlogCard lang={lang} {...post} />)}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Iboga Microdosing – Gentle and Effective" description="Microdosing with iboga root bark: finding the right dosage, starting gently, experiencing profound changes." image="/images/microdosing.jpg" locale="en">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <header class="mb-10">
+      <h1 class="font-serif text-4xl font-semibold text-earth-900">Microdosing</h1>
+      <p class="mt-4 text-xl text-earth-600">Find the right dosage. Don't be afraid – explore!</p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 space-y-6 text-earth-700 leading-relaxed">
+        <h2 class="font-serif text-2xl font-semibold text-earth-900">What does microdosing actually mean?</h2>
+        <p>
+          Microdosing means dosing below the perceptible threshold. Iboga and other psychedelics like
+          psilocybin, ibogaine, mescaline or ayahuasca are increasingly taken in small, non-intoxicating
+          doses to improve performance or combat depression and anxiety. Initial studies show improvements
+          in thinking and creativity tests.
+        </p>
+        <h2 class="font-serif text-2xl font-semibold text-earth-900 pt-4">How does microdosing feel?</h2>
+        <p>
+          It feels like coming home. You are centred in a way that is completely foreign to your
+          habitual state of being – and yet so natural that it's hard to believe you could exist
+          any other way. You are completely <em>compos mentis</em>, capable of continuing your daily
+          activities with a sense of peace, understanding and non-judgement.
+        </p>
+        <div class="bg-forest-50 border border-forest-200 rounded-xl p-6">
+          <h3 class="font-semibold text-forest-800 mb-3">Dosage Example</h3>
+          <p class="text-sm text-forest-700 mb-4">Product: Root Bark Capsules 450mg / 4–5% ibogaine</p>
+          <div class="space-y-2 text-sm text-earth-800">
+            {[
+              ['Up to 60 kg', '1st week: 2 capsules → then 1'],
+              ['Up to 80 kg', '1st week: 3 capsules → then 2'],
+              ['Up to 100 kg', '1st week: 4 capsules → then 3'],
+              ['Over 100 kg', '1st week: 6 capsules → then 4'],
+            ].map(([weight, dose]) => (
+              <div class="flex justify-between py-2 border-b border-forest-100">
+                <span>{weight}</span><span class="font-medium">{dose}</span>
+              </div>
+            ))}
+          </div>
+          <p class="mt-3 text-xs text-earth-500">Start on a weekend – you may feel tired.</p>
+        </div>
+        <div class="space-y-4 pt-2">
+          {[
+            'I was totally surprised how good the microdosing felt after just a few days.',
+            'I beat my nicotine addiction with small amounts of iboga – I could suddenly give it up easily.',
+            'Iboga lifted so much weight from my shoulders in one night – 10 years of therapy hadn\'t managed that.',
+          ].map(quote => (
+            <blockquote class="bg-white border border-earth-200 rounded-xl p-5 shadow-sm">
+              <p class="text-earth-700 italic text-sm">"{quote}"</p>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+      <aside class="space-y-6">
+        <img src="/images/microdosing.jpg" alt="Iboga Microdosing" class="w-full rounded-2xl object-cover shadow-md" style="aspect-ratio: 3/4; object-fit: cover;" />
+        <div class="bg-white border border-earth-200 rounded-xl p-5 shadow-sm">
+          <h3 class="font-semibold text-earth-900 mb-3">Buy Products</h3>
+          <a href="https://iboga.store/en" target="_blank" rel="noopener noreferrer" class="block text-center px-4 py-2.5 bg-forest-600 text-white text-sm font-medium rounded-lg hover:bg-forest-700 transition-colors">
+            Visit Iboga Store ↗
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>
