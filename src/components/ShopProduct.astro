@@ -1,0 +1,124 @@
+---
+import type { Locale } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+import { navPath } from '../utils/paths';
+
+interface Props { lang: Locale; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const listingPath = navPath('/shop', lang);
+const cartPath = navPath('/shop/cart', lang);
+---
+
+<section class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+  <a href={listingPath} class="inline-flex items-center gap-1 text-sm text-earth-600 hover:text-forest-700 transition-colors mb-8">
+    ← {t('shop.backToShop')}
+  </a>
+
+  <div id="product-loading" class="text-center py-20 text-earth-500">{t('shop.loading')}</div>
+  <div id="product-error" class="hidden text-center py-20 text-red-600">{t('shop.error')}</div>
+
+  <div id="product-detail" class="hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div id="product-image-area"></div>
+      <div>
+        <h1 id="product-name" class="font-serif text-3xl font-semibold text-earth-800"></h1>
+        <p id="product-caption" class="text-earth-600 mt-2"></p>
+        <div id="product-price" class="text-2xl font-semibold text-forest-700 mt-4"></div>
+
+        <div id="sku-selector" class="mt-5 hidden">
+          <label class="block text-sm font-medium text-earth-700 mb-2">{t('shop.variant')}</label>
+          <select id="sku-select" class="w-full border border-earth-200 rounded-md px-3 py-2 text-earth-800 focus:outline-none focus:ring-2 focus:ring-forest-400"></select>
+        </div>
+
+        <button id="add-to-cart-btn"
+          class="mt-6 w-full py-3 bg-forest-600 text-white font-medium rounded-md hover:bg-forest-700 transition-colors">
+          {t('shop.addToCart')}
+        </button>
+        <a href={cartPath}
+          class="mt-3 block w-full text-center py-3 border border-earth-200 text-earth-700 font-medium rounded-md hover:border-forest-400 hover:text-forest-700 transition-colors">
+          {t('shop.cart')}
+        </a>
+
+        <div id="product-description" class="mt-8 prose prose-earth text-earth-700 text-sm leading-relaxed"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ addedLabel: t('shop.added'), addToCartLabel: t('shop.addToCart') }}>
+  const API_BASE = (import.meta.env.PUBLIC_SHOP_API_URL ?? '').replace(/\/$/, '');
+  let currentProduct = null;
+
+  function getSelectedSku() {
+    if (!currentProduct) return null;
+    if (currentProduct.skus.length <= 1) return currentProduct.default_sku ?? currentProduct.skus[0] ?? null;
+    const sel = document.getElementById('sku-select');
+    return currentProduct.skus.find(s => s.uuid === sel?.value) ?? null;
+  }
+
+  function renderProduct(product) {
+    currentProduct = product;
+    document.getElementById('product-loading').classList.add('hidden');
+    const detail = document.getElementById('product-detail');
+
+    document.getElementById('product-name').textContent = product.name;
+    document.getElementById('product-caption').textContent = product.caption ?? '';
+
+    const imgArea = document.getElementById('product-image-area');
+    const img = product.default_sku?.image ?? product.skus[0]?.image ?? '';
+    imgArea.innerHTML = img
+      ? `<img src="${img}" alt="${product.name}" class="w-full rounded-xl object-cover aspect-square" />`
+      : `<div class="w-full aspect-square rounded-xl bg-earth-100 flex items-center justify-center"><span class="text-8xl">🌿</span></div>`;
+
+    if (product.skus.length > 1) {
+      const sel = document.getElementById('sku-select');
+      sel.innerHTML = product.skus.map(s => `<option value="${s.uuid}">${s.name} — ${s.gross} ${s.currency}</option>`).join('');
+      document.getElementById('sku-selector').classList.remove('hidden');
+      sel.addEventListener('change', updatePrice);
+    }
+
+    updatePrice();
+
+    const desc = document.getElementById('product-description');
+    desc.innerHTML = product.description ?? '';
+
+    detail.classList.remove('hidden');
+  }
+
+  function updatePrice() {
+    const sku = getSelectedSku();
+    const priceEl = document.getElementById('product-price');
+    priceEl.textContent = sku ? `${sku.gross} ${sku.currency}` : '';
+  }
+
+  document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+    const sku = getSelectedSku();
+    if (!sku || !currentProduct) return;
+    const cart = JSON.parse(localStorage.getItem('iboga-cart') ?? '[]');
+    const existing = cart.find(i => i.skuUuid === sku.uuid);
+    if (existing) { existing.quantity += 1; }
+    else { cart.push({ skuUuid: sku.uuid, productName: currentProduct.name, skuName: sku.name, gross: sku.gross, currency: sku.currency, quantity: 1 }); }
+    localStorage.setItem('iboga-cart', JSON.stringify(cart));
+    const btn = document.getElementById('add-to-cart-btn');
+    btn.textContent = addedLabel + ' ✓';
+    btn.classList.replace('bg-forest-600', 'bg-forest-800');
+    setTimeout(() => { btn.textContent = addToCartLabel; btn.classList.replace('bg-forest-800', 'bg-forest-600'); }, 1800);
+  });
+
+  async function loadProduct() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!id) { document.getElementById('product-loading').classList.add('hidden'); document.getElementById('product-error').classList.remove('hidden'); return; }
+    try {
+      const res = await fetch(`${API_BASE}/api/v1/shop/products/${id}/`);
+      if (!res.ok) throw new Error(`${res.status}`);
+      renderProduct(await res.json());
+    } catch {
+      document.getElementById('product-loading').classList.add('hidden');
+      document.getElementById('product-error').classList.remove('hidden');
+    }
+  }
+
+  loadProduct();
+</script>

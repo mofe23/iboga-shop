@@ -56,12 +56,14 @@ function isActive(path: string) {
           </a>
         ))}
         <a
-          href="https://iboga.store"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="ml-2 px-4 py-2 bg-forest-600 text-white text-sm font-medium rounded-md hover:bg-forest-700 transition-colors"
+          href={prefix('/shop')}
+          class={`ml-2 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+            isActive('/shop')
+              ? 'bg-forest-700 text-white'
+              : 'bg-forest-600 text-white hover:bg-forest-700'
+          }`}
         >
-          {t('nav.shop')} ↗
+          {t('nav.shop')}
         </a>
       </nav>
 
@@ -122,12 +124,10 @@ function isActive(path: string) {
           </a>
         ))}
         <a
-          href="https://iboga.store"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-2 px-4 py-2 bg-forest-600 text-white text-sm font-medium rounded-md text-center"
+          href={prefix('/shop')}
+          class="mt-2 px-4 py-2 bg-forest-600 text-white text-sm font-medium rounded-md text-center hover:bg-forest-700 transition-colors"
         >
-          {t('nav.shop')} ↗
+          {t('nav.shop')}
         </a>
       </div>
     </nav>

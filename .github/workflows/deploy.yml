@@ -35,6 +35,7 @@ jobs:
         run: npm run build
         env:
           SITE: https://iboga.shop
+          PUBLIC_SHOP_API_URL: ${{ secrets.SHOP_API_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

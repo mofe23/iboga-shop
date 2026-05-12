@@ -1,0 +1,123 @@
+---
+import type { Locale } from '../i18n/translations';
+import { useTranslations } from '../i18n/translations';
+import { navPath } from '../utils/paths';
+
+interface Props { lang: Locale; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const listingPath = navPath('/shop', lang);
+---
+
+<section class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="font-serif text-3xl font-semibold text-earth-800">{t('shop.cart')}</h1>
+    <a href={listingPath} class="text-sm text-earth-600 hover:text-forest-700 transition-colors">
+      ← {t('shop.backToShop')}
+    </a>
+  </div>
+
+  <div id="cart-empty" class="hidden text-center py-16 text-earth-500">{t('shop.cartEmpty')}</div>
+
+  <div id="cart-content" class="hidden">
+    <div id="cart-items" class="space-y-3"></div>
+    <div class="mt-6 pt-6 border-t border-earth-100 flex items-center justify-between">
+      <div>
+        <span class="text-earth-600 text-sm">{t('shop.total')}</span>
+        <div id="cart-total" class="text-2xl font-semibold text-forest-700"></div>
+      </div>
+      <div class="flex gap-3">
+        <button id="clear-cart-btn"
+          class="px-4 py-2 border border-earth-200 text-earth-600 text-sm rounded-md hover:border-red-300 hover:text-red-600 transition-colors">
+          {t('shop.clearCart')}
+        </button>
+        <button id="checkout-btn"
+          class="px-6 py-2 bg-forest-600 text-white font-medium rounded-md hover:bg-forest-700 transition-colors">
+          {t('shop.checkout')}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ removeLabel: t('shop.remove'), checkoutNote: t('shop.checkoutNote') }}>
+  function loadCart() {
+    try { return JSON.parse(localStorage.getItem('iboga-cart') ?? '[]'); }
+    catch { return []; }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('iboga-cart', JSON.stringify(cart));
+  }
+
+  function calcTotal(cart) {
+    const byCurrency = {};
+    for (const item of cart) {
+      byCurrency[item.currency] = (byCurrency[item.currency] ?? 0) + parseFloat(item.gross) * item.quantity;
+    }
+    return Object.entries(byCurrency).map(([cur, amt]) => `${amt.toFixed(2)} ${cur}`).join(' + ');
+  }
+
+  function render() {
+    const cart = loadCart();
+    const emptyEl = document.getElementById('cart-empty');
+    const contentEl = document.getElementById('cart-content');
+    if (cart.length === 0) {
+      emptyEl.classList.remove('hidden');
+      contentEl.classList.add('hidden');
+      return;
+    }
+    emptyEl.classList.add('hidden');
+    contentEl.classList.remove('hidden');
+
+    document.getElementById('cart-items').innerHTML = cart.map((item, idx) => `
+      <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-earth-100 shadow-sm">
+        <div>
+          <div class="font-medium text-earth-800">${item.productName}</div>
+          <div class="text-sm text-earth-500">${item.skuName}</div>
+          <div class="text-forest-700 font-semibold mt-0.5">${item.gross} ${item.currency}</div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 border border-earth-200 rounded-md px-2 py-1">
+            <button data-idx="${idx}" data-delta="-1" class="qty-btn text-earth-600 hover:text-forest-700 font-bold w-5">−</button>
+            <span class="text-sm text-earth-800 w-5 text-center">${item.quantity}</span>
+            <button data-idx="${idx}" data-delta="1" class="qty-btn text-earth-600 hover:text-forest-700 font-bold w-5">+</button>
+          </div>
+          <button data-idx="${idx}" class="remove-btn text-xs text-earth-400 hover:text-red-500 transition-colors">${removeLabel}</button>
+        </div>
+      </div>`).join('');
+
+    document.getElementById('cart-total').textContent = calcTotal(cart);
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cart = loadCart();
+        cart.splice(Number(btn.dataset.idx), 1);
+        saveCart(cart);
+        render();
+      });
+    });
+
+    document.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cart = loadCart();
+        const item = cart[Number(btn.dataset.idx)];
+        if (!item) return;
+        item.quantity = Math.max(1, item.quantity + Number(btn.dataset.delta));
+        saveCart(cart);
+        render();
+      });
+    });
+  }
+
+  document.getElementById('clear-cart-btn').addEventListener('click', () => {
+    saveCart([]);
+    render();
+  });
+
+  document.getElementById('checkout-btn').addEventListener('click', () => {
+    alert(checkoutNote);
+  });
+
+  render();
+</script>
