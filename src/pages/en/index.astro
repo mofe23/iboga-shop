@@ -27,6 +27,7 @@ const posts = [
     date: 'September 15, 2023',
   },
 ];
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -37,7 +38,7 @@ const posts = [
   <!-- Hero -->
   <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-earth-900">
     <div class="absolute inset-0">
-      <img src="/images/iboga-nature-2.jpg" alt="Iboga Nature" class="w-full h-full object-cover opacity-30" />
+      <img src={`${_b}/images/iboga-nature-2.jpg`} alt="Iboga Nature" class="w-full h-full object-cover opacity-30" />
       <div class="absolute inset-0 bg-gradient-to-br from-earth-900/90 via-earth-900/70 to-forest-900/80"></div>
     </div>
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24">
@@ -112,7 +113,7 @@ const posts = [
         </div>
       </div>
       <div class="relative">
-        <img src="/images/iboga-plant.jpg" alt="Tabernanthe Iboga Plant" class="rounded-2xl shadow-lg w-full object-cover aspect-square" />
+        <img src={`${_b}/images/iboga-plant.jpg`} alt="Tabernanthe Iboga Plant" class="rounded-2xl shadow-lg w-full object-cover aspect-square" />
         <div class="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-md p-4 max-w-[200px]">
           <p class="text-xs text-earth-500 font-medium uppercase tracking-wider">Tabernanthe Iboga</p>
           <p class="text-sm text-earth-800 mt-1">Central African healing plant with psychoactive properties</p>
@@ -155,7 +156,7 @@ const posts = [
   <section class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
       <div class="md:col-span-1">
-        <img src="/images/della-portrait.jpg" alt="Della – IBOGAGermany" class="rounded-2xl w-full object-cover aspect-square shadow-md" />
+        <img src={`${_b}/images/della-portrait.jpg`} alt="Della – IBOGAGermany" class="rounded-2xl w-full object-cover aspect-square shadow-md" />
       </div>
       <blockquote class="md:col-span-2">
         <div class="text-4xl text-forest-300 font-serif leading-none mb-4">"</div>

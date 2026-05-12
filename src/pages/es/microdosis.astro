@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Microdosis de Iboga – Suave y eficaz" description="Microdosis con corteza de raíz de iboga: encontrar la dosis correcta, comenzar suavemente, experimentar cambios profundos." image="/images/microdosing.jpg" locale="es">
@@ -34,7 +35,7 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </div>
       <aside class="space-y-6">
-        <img src="/images/microdosing.jpg" alt="Microdosis Iboga" class="w-full rounded-2xl object-cover shadow-md" style="aspect-ratio: 3/4; object-fit: cover;" />
+        <img src={`${_b}/images/microdosing.jpg`} alt="Microdosis Iboga" class="w-full rounded-2xl object-cover shadow-md" style="aspect-ratio: 3/4; object-fit: cover;" />
         <a href="https://iboga.store" target="_blank" rel="noopener noreferrer" class="block text-center px-4 py-2.5 bg-forest-600 text-white text-sm font-medium rounded-lg hover:bg-forest-700 transition-colors">
           Visitar Iboga Store ↗
         </a>

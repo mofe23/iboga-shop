@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://iboga.shop',
+  site: 'https://mofe23.github.io',
+  base: '/iboga-shop',
   integrations: [
     tailwind(),
   ],

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -23,7 +24,7 @@ import Layout from '../../../layouts/Layout.astro';
         Della/IBOGAGermany at the beginning of April 2021 in Hesse. It is the most extraordinary
         experience I have had in my life so far.
       </p>
-      <img src="/images/fullflood-experience.jpg" alt="Full Flood Experience" class="mt-8 w-full rounded-2xl object-cover shadow-md" style="max-height: 500px; object-fit: cover;" />
+      <img src={`${_b}/images/fullflood-experience.jpg`} alt="Full Flood Experience" class="mt-8 w-full rounded-2xl object-cover shadow-md" style="max-height: 500px; object-fit: cover;" />
     </header>
 
     <div class="space-y-6 text-earth-700 leading-relaxed">

@@ -1,5 +1,6 @@
 ---
 import { useTranslations, type Locale, LOCALES } from '../i18n/translations';
+import { asset, navPath } from '../utils/paths';
 
 interface Props {
   lang: Locale;
@@ -9,11 +10,12 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 function prefix(path: string) {
-  return lang === 'de' ? path : `/${lang}${path}`;
+  return navPath(path, lang);
 }
 
 const langLabels: Record<Locale, string> = { de: 'DE', en: 'EN', fr: 'FR', es: 'ES' };
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname;
 function isActive(path: string) {
   return currentPath === prefix(path) || currentPath === prefix(path) + '/';
@@ -25,7 +27,7 @@ function isActive(path: string) {
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <a href={prefix('/')} class="flex items-center gap-3 group">
-        <img src="/images/logo.png" alt="Iboga.shop" class="h-9 w-9 rounded-full object-cover" />
+        <img src={asset('/images/logo.png')} alt="Iboga.shop" class="h-9 w-9 rounded-full object-cover" />
         <span class="font-serif font-semibold text-earth-800 text-lg group-hover:text-forest-700 transition-colors">
           iboga<span class="text-forest-600">.shop</span>
         </span>
@@ -67,9 +69,11 @@ function isActive(path: string) {
       <div class="flex items-center gap-2">
         <div class="flex items-center gap-1 border border-earth-200 rounded-md p-1">
           {LOCALES.map((locale) => {
+            const langSlug = currentPath.replace(new RegExp(`^${base}`), '');
+            const cleanPath = langSlug.replace(/^\/(en|fr|es)/, '') || '/';
             const href = locale === 'de'
-              ? currentPath.replace(/^\/(en|fr|es)/, '') || '/'
-              : `/${locale}${currentPath.replace(/^\/(en|fr|es)/, '') || '/'}`;
+              ? `${base}${cleanPath}`
+              : `${base}/${locale}${cleanPath}`;
             return (
               <a
                 href={href}

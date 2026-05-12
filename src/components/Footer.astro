@@ -1,5 +1,6 @@
 ---
 import { useTranslations, type Locale } from '../i18n/translations';
+import { asset, navPath } from '../utils/paths';
 
 interface Props {
   lang: Locale;
@@ -9,7 +10,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 function prefix(path: string) {
-  return lang === 'de' ? path : `/${lang}${path}`;
+  return navPath(path, lang);
 }
 ---
 
@@ -19,7 +20,7 @@ function prefix(path: string) {
       <!-- Brand -->
       <div>
         <div class="flex items-center gap-3 mb-4">
-          <img src="/images/logo.png" alt="Iboga.shop" class="h-10 w-10 rounded-full object-cover" />
+          <img src={asset('/images/logo.png')} alt="Iboga.shop" class="h-10 w-10 rounded-full object-cover" />
           <span class="font-serif text-xl text-white">iboga<span class="text-forest-400">.shop</span></span>
         </div>
         <p class="text-sm text-earth-400 leading-relaxed">

@@ -34,6 +34,7 @@ const posts = [
     date: '15. September 2023',
   },
 ];
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -45,7 +46,7 @@ const posts = [
   <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-earth-900">
     <div class="absolute inset-0">
       <img
-        src="/images/iboga-nature-2.jpg"
+        src={`${_b}/images/iboga-nature-2.jpg`}
         alt="Iboga Natur"
         class="w-full h-full object-cover opacity-30"
       />
@@ -140,7 +141,7 @@ const posts = [
       </div>
       <div class="relative">
         <img
-          src="/images/iboga-plant.jpg"
+          src={`${_b}/images/iboga-plant.jpg`}
           alt="Tabernanthe Iboga Pflanze"
           class="rounded-2xl shadow-lg w-full object-cover aspect-square"
         />
@@ -200,7 +201,7 @@ const posts = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
       <div class="md:col-span-1">
         <img
-          src="/images/della-portrait.jpg"
+          src={`${_b}/images/della-portrait.jpg`}
           alt="Della – IBOGAGermany"
           class="rounded-2xl w-full object-cover aspect-square shadow-md"
         />

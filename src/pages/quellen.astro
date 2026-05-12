@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { asset } from '../utils/paths';
 ---
 
 <Layout
@@ -85,7 +86,7 @@ import Layout from '../layouts/Layout.astro';
             '/images/iboga-nature-2.jpg',
             '/images/iboga-plant.jpg',
             '/images/professional-treatment.jpg',
-          ].map(src => (
+          ].map(src => (asset(src))).map(src => (
             <img src={src} alt="Iboga" class="w-full rounded-xl object-cover aspect-square shadow-sm" loading="lazy" />
           ))}
         </div>

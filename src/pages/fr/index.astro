@@ -6,12 +6,13 @@ const posts = [
   { slug: 'microdosage-iboga', title: 'IBOGA – MICRODOSAGE AVEC ÉCORCE DE RACINE', excerpt: 'Le microdosage peut conduire à des changements internes profonds. On se sent comme si l\'on rentrait chez soi – centré, clair, dans son état le plus authentique.', image: '/images/microdosing.jpg', date: '25 juillet 2023' },
   { slug: 'infos-importantes-iboga', title: 'IBOGA – LES INFORMATIONS LES PLUS IMPORTANTES', excerpt: 'Qu\'est-ce que l\'iboga ? Comment agit-il ? Nous répondons aux questions les plus fréquemment posées sur l\'iboga.', image: '/images/iboga-infos.jpg', date: '23 juillet 2023' },
 ];
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Traitement Iboga en Allemagne – Informations, Accompagnement & Rendez-vous" description="Informations, accompagnement et rendez-vous pour les traitements iboga en Allemagne. Sûr, professionnel et durable." locale="fr">
   <section class="relative min-h-[60vh] flex items-center overflow-hidden bg-earth-900">
     <div class="absolute inset-0">
-      <img src="/images/iboga-nature-2.jpg" alt="Iboga Nature" class="w-full h-full object-cover opacity-30" />
+      <img src={`${_b}/images/iboga-nature-2.jpg`} alt="Iboga Nature" class="w-full h-full object-cover opacity-30" />
       <div class="absolute inset-0 bg-gradient-to-br from-earth-900/90 via-earth-900/70 to-forest-900/80"></div>
     </div>
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20">

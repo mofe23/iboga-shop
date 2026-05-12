@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -93,7 +94,7 @@ import Layout from '../layouts/Layout.astro';
 
       <div>
         <img
-          src="/images/contact-bg.png"
+          src={`${_b}/images/contact-bg.png`}
           alt="Iboga Kontakt"
           class="w-full rounded-2xl object-cover shadow-md mb-6"
           style="aspect-ratio: 16/10; object-fit: cover;"

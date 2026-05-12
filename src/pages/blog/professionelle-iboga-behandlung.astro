@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -20,7 +21,7 @@ import Layout from '../../layouts/Layout.astro';
         man so nah wie möglich an der Natur verbringen.
       </p>
       <img
-        src="/images/professional-treatment.jpg"
+        src={`${_b}/images/professional-treatment.jpg`}
         alt="Professionelle Iboga Behandlung"
         class="mt-8 w-full rounded-2xl object-cover aspect-video shadow-md"
       />

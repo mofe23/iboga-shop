@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const _b = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Book Iboga Treatment – Iboga Germany" description="Professional iboga treatment in nature. 4 days, round-the-clock support. Contact Iboga Germany for a personal quote." image="/images/professional-treatment.jpg" locale="en">
@@ -10,7 +11,7 @@ import Layout from '../../layouts/Layout.astro';
     </header>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
       <div>
-        <img src="/images/professional-treatment.jpg" alt="Iboga Treatment" class="w-full rounded-2xl object-cover shadow-md aspect-video mb-6" />
+        <img src={`${_b}/images/professional-treatment.jpg`} alt="Iboga Treatment" class="w-full rounded-2xl object-cover shadow-md aspect-video mb-6" />
         <div class="space-y-6">
           <section>
             <h2 class="font-serif text-xl font-semibold text-earth-900 mb-3">The Setting</h2>
