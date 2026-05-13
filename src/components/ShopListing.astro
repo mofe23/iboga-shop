@@ -24,7 +24,7 @@ const cartPath = navPath('/shop/cart', lang);
   <div id="shop-products" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 </section>
 
-<script define:vars={{ productPath, viewLabel: t('shop.viewProduct'), noProductsLabel: t('shop.noProducts') }}>
+<script define:vars={{ productPath, lang, viewLabel: t('shop.viewProduct'), noProductsLabel: t('shop.noProducts') }}>
   const API_BASE = (import.meta.env.PUBLIC_SHOP_API_URL ?? '').replace(/\/$/, '');
 
   function cartCount() {
@@ -54,7 +54,7 @@ const cartPath = navPath('/shop/cart', lang);
     }
     grid.innerHTML = products.map(p => {
       const sku = p.default_sku;
-      const price = sku ? `${sku.gross} ${sku.currency}` : '';
+      const price = sku?.gross ?? '';
       const img = sku?.image ?? '';
       const placeholder = `<div class="w-full h-48 bg-earth-100 flex items-center justify-center"><span class="text-5xl">🌿</span></div>`;
       return `<a href="${productPath}?id=${p.uuid}" class="block group bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-earth-100">
@@ -72,10 +72,14 @@ const cartPath = navPath('/shop/cart', lang);
 
   async function loadProducts() {
     try {
-      const res = await fetch(`${API_BASE}/api/v1/shop/products/`);
+      const res = await fetch(`${API_BASE}/api/v1/shop/products/`, { headers: { hreflang: lang } });
       if (!res.ok) throw new Error(`${res.status}`);
       const data = await res.json();
-      renderProducts(data.results ?? data);
+      const products = (data.results ?? data).map(p => ({
+        ...p,
+        default_sku: p.skus?.find(s => s.uuid === p.default_sku) ?? p.skus?.[0] ?? null,
+      }));
+      renderProducts(products);
     } catch {
       document.getElementById('shop-loading').classList.add('hidden');
       document.getElementById('shop-error').classList.remove('hidden');

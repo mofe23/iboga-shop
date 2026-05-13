@@ -46,7 +46,7 @@ const cartPath = navPath('/shop/cart', lang);
   </div>
 </section>
 
-<script define:vars={{ addedLabel: t('shop.added'), addToCartLabel: t('shop.addToCart') }}>
+<script define:vars={{ lang, addedLabel: t('shop.added'), addToCartLabel: t('shop.addToCart') }}>
   const API_BASE = (import.meta.env.PUBLIC_SHOP_API_URL ?? '').replace(/\/$/, '');
   let currentProduct = null;
 
@@ -73,7 +73,7 @@ const cartPath = navPath('/shop/cart', lang);
 
     if (product.skus.length > 1) {
       const sel = document.getElementById('sku-select');
-      sel.innerHTML = product.skus.map(s => `<option value="${s.uuid}">${s.name} — ${s.gross} ${s.currency}</option>`).join('');
+      sel.innerHTML = product.skus.map(s => `<option value="${s.uuid}">${s.name ?? s.uuid} — ${s.gross}</option>`).join('');
       document.getElementById('sku-selector').classList.remove('hidden');
       sel.addEventListener('change', updatePrice);
     }
@@ -89,7 +89,7 @@ const cartPath = navPath('/shop/cart', lang);
   function updatePrice() {
     const sku = getSelectedSku();
     const priceEl = document.getElementById('product-price');
-    priceEl.textContent = sku ? `${sku.gross} ${sku.currency}` : '';
+    priceEl.textContent = sku?.gross ?? '';
   }
 
   document.getElementById('add-to-cart-btn').addEventListener('click', () => {
@@ -98,7 +98,7 @@ const cartPath = navPath('/shop/cart', lang);
     const cart = JSON.parse(localStorage.getItem('iboga-cart') ?? '[]');
     const existing = cart.find(i => i.skuUuid === sku.uuid);
     if (existing) { existing.quantity += 1; }
-    else { cart.push({ skuUuid: sku.uuid, productName: currentProduct.name, skuName: sku.name, gross: sku.gross, currency: sku.currency, quantity: 1 }); }
+    else { cart.push({ skuUuid: sku.uuid, productName: currentProduct.name, skuName: sku.name ?? '', gross: sku.gross, currency: sku.currency, quantity: 1 }); }
     localStorage.setItem('iboga-cart', JSON.stringify(cart));
     const btn = document.getElementById('add-to-cart-btn');
     btn.textContent = addedLabel + ' ✓';
@@ -111,9 +111,11 @@ const cartPath = navPath('/shop/cart', lang);
     const id = params.get('id');
     if (!id) { document.getElementById('product-loading').classList.add('hidden'); document.getElementById('product-error').classList.remove('hidden'); return; }
     try {
-      const res = await fetch(`${API_BASE}/api/v1/shop/products/${id}/`);
+      const res = await fetch(`${API_BASE}/api/v1/shop/products/${id}/`, { headers: { hreflang: lang } });
       if (!res.ok) throw new Error(`${res.status}`);
-      renderProduct(await res.json());
+      const product = await res.json();
+      product.default_sku = product.skus?.find(s => s.uuid === product.default_sku) ?? product.skus?.[0] ?? null;
+      renderProduct(product);
     } catch {
       document.getElementById('product-loading').classList.add('hidden');
       document.getElementById('product-error').classList.remove('hidden');
